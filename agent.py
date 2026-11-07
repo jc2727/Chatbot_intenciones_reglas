@@ -10,10 +10,10 @@ def resolver_producto(
     """Decide qué producto usar a partir del texto y de la imagen.
 
     Entradas:
-        producto_texto: nombre canónico detectado en el mensaje, o None.
+        producto_texto: nombre detectado en el mensaje, o None.
             El detector NLP devuelve "no especificado" cuando no encuentra
             producto; aquí también debe interpretarse como ausencia.
-        producto_imagen: nombre canónico predicho por visión, o None si no
+        producto_imagen: nombre  predicho por visión, o None si no
             se proporcionó imagen.
 
         Los nombres esperados son Granny-Smith, Orange, Royal-Gala y Satsumas.

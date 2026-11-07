@@ -18,6 +18,10 @@ st.markdown(
 )
 st.caption("Cada consulta es independiente. Para aclarar un conflicto, envía el nombre sin imagen.")
 
+st.markdown(
+    "Actualmente solo tenemos información sobre frutas como Granny-Smith, Orange, Royal-Gala y Satsumas."
+)
+
 if "mensajes" not in st.session_state:
     st.session_state.mensajes = []
 

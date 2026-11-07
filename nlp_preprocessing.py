@@ -1,4 +1,4 @@
-"""Spanish preprocessing reproduced from Copia_de_Avence_dos+imagen.ipynb."""
+
 
 import re
 import sys
@@ -20,17 +20,18 @@ stop_words.discard("cuando")
 
 
 def normalizar_texto(texto):
-    """Lowercase, remove accents/punctuation, and collapse whitespace."""
+    """Limpieza de texto"""
     texto = texto.lower()
     texto = unicodedata.normalize("NFD", texto)
     texto = texto.encode("ascii", "ignore").decode("utf-8")
     texto = re.sub(r"[^a-zñ0-9\s]", " ", texto)
+    texto = re.sub(r"\bpromo\b", "promocion", texto) #Esto ayuda a que no se pierda el significado de 'promo' al normalizar el texto
     texto = re.sub(r"\s+", " ", texto).strip()
     return texto
 
 
 def tokenizar_y_stem(texto):
-    """Return filtered tokens and their Spanish stems, as in the notebook."""
+    """Tokenizador y stemmer en español"""
     texto = normalizar_texto(texto)
     tokens = tokenizer.tokenize(texto)
     tokens = [token for token in tokens if token not in stop_words]
@@ -39,5 +40,5 @@ def tokenizar_y_stem(texto):
 
 
 def preparar_texto(texto):
-    """Produce the stemmed string expected by the fitted BoW pipeline."""
+    """genera el texto con los stems de las palabras listo para el modelo"""
     return " ".join(tokenizar_y_stem(texto)[1])
